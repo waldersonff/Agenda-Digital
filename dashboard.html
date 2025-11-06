@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Digital</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="dashboard.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Agenda Digital</h1>
+        <div id="user-info">
+            <span id="user-name"></span>
+            <button id="logout-btn">Logout</button>
+        </div>
+    </header>
+    <main>
+        <section id="calendar-section">
+            <h2>Calendário</h2>
+            <div id="calendar"></div>
+        </section>
+        <section id="tasks-section">
+            <h2>Lista de Tarefas</h2>
+            <div id="task-form">
+                <input type="text" id="task-input" placeholder="Nova tarefa">
+                <input type="date" id="task-date">
+                <button id="add-task-btn">Adicionar</button>
+            </div>
+            <ul id="task-list"></ul>
+        </section>
+        <section id="gamification-section">
+            <h2>Gamificação</h2>
+            <div id="points">Pontos: <span id="points-value">0</span></div>
+            <div id="level">Nível: <span id="level-value">1</span></div>
+            <div id="badges">Emblemas: <span id="badges-list"></span></div>
+        </section>
+    </main>
+</body>
+</html>

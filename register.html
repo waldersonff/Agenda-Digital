@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar</title>
+    <link rel="stylesheet" href="login.css">
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="auth.js"></script>
+</head>
+<body>
+    <div class="card">
+        <div class="content">
+            <h1>Agenda Digital</h1>
+            <h2>Registrar</h2>
+            <h3>Crie sua conta</h3>
+            <div id="error-message" class="error"></div>
+            <form id="register-form">
+                <div class="input-group">
+                    <label for="username">Nome de usuário:</label>
+                    <input type="text" id="username" placeholder="Digite seu nome de usuário" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Digite seu email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" placeholder="Digite sua senha" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirmar Senha:</label>
+                    <input type="password" id="confirm-password" placeholder="Confirme sua senha" required>
+                </div>
+                <button type="submit">Criar Conta</button>
+            </form>
+            <p>Já tenho uma conta. <a href="login.html">Login</a></p>
+        </div>
+        <div class="hero"></div>
+    </div>
+</body>
+</html>
