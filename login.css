@@ -3,16 +3,26 @@ body {
     margin: 0;
     display: grid;
     place-items: center;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #dfdbfc;
-    color: #312e37;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: var(--cor-texto);
     overflow: hidden;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 :root {
-    --cor-primaria: #816ce0;
-    --cor-secundaria: #b4b4b4;
-    --cor-borda: #a9a9a9;
+    --cor-primaria: #6366f1;
+    --cor-secundaria: #64748b;
+    --cor-borda: #e2e8f0;
+    --cor-sucesso: #10b981;
+    --cor-erro: #ef4444;
+    --cor-fundo: #f8fafc;
+    --cor-texto: #1e293b;
 }
 
 * {
@@ -22,11 +32,26 @@ body {
 .card {
     display: flex;
     align-items: center;
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 6px;
-    max-width: 400px;
-    box-shadow: 0 20px 54px rgba(126 48 255/ 12%);
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 8px;
+    max-width: 450px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideUp 0.6s ease-out 0.2s both;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .content {
@@ -49,13 +74,14 @@ body {
     color: var(--cor-secundaria);
     text-align: center;
 }
-input, button{
-    font-size: 15px;
+input, button {
+    font-size: 16px;
     font-family: inherit;
     display: block;
     padding: 0 16px;
-    border-radius: 6px;
-    height: 48px;
+    border-radius: 10px;
+    height: 50px;
+    transition: all 0.3s ease;
 }
 .input-group {
     margin-bottom: 20px;
@@ -71,8 +97,14 @@ input, button{
 form > input {
     width: 100%;
     margin-bottom: 10px;
-    border: 1px solid var(--cor-borda);
-    background: transparent;
+    border: 2px solid var(--cor-borda);
+    background: rgba(255, 255, 255, 0.8);
+    outline: none;
+}
+
+form > input:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 form > input::placeholder {
@@ -80,11 +112,15 @@ form > input::placeholder {
 }
 
 .error {
-    color: #e74c3c;
+    color: var(--cor-erro);
     font-size: 14px;
     margin-bottom: 20px;
     text-align: center;
     display: none;
+    background: rgba(220, 53, 69, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid var(--cor-erro);
 }
 form .row{
     display: flex;
@@ -108,17 +144,45 @@ form a:hover {
     text-decoration: underline;
 }
 
-form > button{
+form > button {
     color: #ffffff;
-    background: var(--cor-primaria);
+    background: linear-gradient(135deg, var(--cor-primaria), #7c3aed);
     border: 0;
     padding: 0 48px;
     width: 100%;
     cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+form > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+form > button:hover::before {
+    left: 100%;
 }
 
 form > button:hover {
-    opacity: 0.9;
+    background: linear-gradient(135deg, #7c3aed, var(--cor-primaria));
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(99, 102, 241, 0.4);
+}
+
+form > button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
 }
 
 p{
@@ -166,5 +230,12 @@ input[type="checkbox"] {
     }
     .content {
         width: 100%;
+    }
+    .card {
+        max-width: 90%;
+        padding: 4px;
+    }
+    .content {
+        padding: 24px;
     }
 }
